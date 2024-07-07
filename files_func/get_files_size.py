@@ -18,7 +18,6 @@ def get_files_size() -> dict:
             with open(os.path.join(local_file, file), 'rb') as data:
                 text = data.read()
                 files_hash[file] = hashlib.sha256(text).hexdigest()
-        logging.info('словарь сформирован')
         return files_hash
     except FileNotFoundError:
         logging.error('не удалось найти папку')

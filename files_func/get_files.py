@@ -8,7 +8,6 @@ def get_files() -> list:
     невозможности найти файл выдает исключение FileNotFoundError и завершает работу
     return: list - список файлов в папке"""
     try:
-        logging.info('начинаю делать лист')
         return os.listdir(local_file)
 
     except FileNotFoundError:
