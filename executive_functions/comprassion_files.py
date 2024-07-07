@@ -18,8 +18,8 @@ def comprassion_files(cloud_storage: dict, local_storage: dict) -> None:
                 if cloud_storage[file] != local_storage[file]:
                     response = reload(os.path.join(local_file, file), file)
                     if response == 201:
-                        logging.info('файл дозаписан успешно')
+                        logging.info(f'файл {file} дозаписан успешно')
                     else:
-                        logging.error('не удалось записать файл')
+                        logging.error(f'не удалось записать файл {file}')
         except ConnectionRefusedError:
             logging.error('папка в облаке не найдена')

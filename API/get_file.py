@@ -1,4 +1,3 @@
-import logging
 import requests
 import time
 from Config.config_file import TOKEN, disk_path
@@ -19,9 +18,7 @@ def get_file() -> dict | int:
         data_response: Dict = response['_embedded']['items']
         for files in data_response:
             data[files['name']] = files['sha256']
-        logging.info('словарь успешно создан')
         return data
     else:
-        logging.error('ошибка соединения')
         time.sleep(3)
         return 404

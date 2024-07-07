@@ -26,6 +26,6 @@ def function(num: int) -> None:
     except ConnectionError:
         logging.error('нет соединения')
     except ConnectionRefusedError:
-        logging.error('ошибка соединения')
+        logging.error('невозможно получить данные из облака')
 
     sleep(num)

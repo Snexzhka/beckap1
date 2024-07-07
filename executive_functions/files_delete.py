@@ -16,8 +16,8 @@ def files_delete(cloud_storage: dict, local_storage: dict) -> None:
             if not local_storage.get(file):
                 response = delete(file)
                 if response == 201:
-                    logging.info('файл успешно удален')
+                    logging.info(f'файл {file} успешно удален')
                 else:
-                    logging.error('не удалось удалить  файл')
+                    logging.error(f'не удалось удалить  файл {file}')
         except ConnectionError:
-            logging.error('невозможно получть доступ ')
+            logging.error('нет соединения ')

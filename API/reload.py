@@ -21,10 +21,9 @@ def reload(path: str, file: str) -> int:
     try:
         fileload = open(path, 'rb')
     except FileNotFoundError:
-        logging.error('невозможно открыть файл')
+        logging.error(f'невозможно открыть файл {file}')
         return 410
     files: Dict = {'file': fileload}
     response = requests.post(url, files=files)
     fileload.close()
-    logging.info('файл успешно загружен')
     return response.status_code

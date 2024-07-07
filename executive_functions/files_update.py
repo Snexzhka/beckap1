@@ -17,8 +17,8 @@ def files_update(cloud_storage: dict, local_storage: dict) -> None:
             if not cloud_storage.get(file):
                 response = load_file(os.path.join(local_file, file), file)
                 if response == 201:
-                    logging.info('файл успешно записан')
+                    logging.info(f'файл {file} успешно записан')
                 else:
-                    logging.error('не удалось записать файл')
+                    logging.error(f'не удалось записать файл {file}')
         except ConnectionError:
             logging.error('ошибка соединения')

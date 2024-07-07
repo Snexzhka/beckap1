@@ -1,5 +1,4 @@
 import requests
-import logging
 from Config.config_file import TOKEN, disk_path
 
 url = 'https://cloud-api.yandex.net/v1/disk/resources'
@@ -13,5 +12,4 @@ def delete(file: str) -> int:
     return: int - статус запроса """
     response = requests.delete(f'https://cloud-api.yandex.net/v1/disk/resources?path={disk_path}/{file}',
                                headers=headers)
-    logging.info('Файл успешно удален ')
     return response.status_code

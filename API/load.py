@@ -19,10 +19,9 @@ def load_file(path: str, file: str) -> int:
     try:
         files_load = open(path, 'rb')
     except FileNotFoundError:
-        logging.error('невозможно открыть файл')
+        logging.error(f'файл {file} не найден')
         return 410
     files: Dict = {'file': files_load}
     response = requests.post(url, files=files)
     files_load.close()
-    logging.info('файл успешно загружен в облако')
     return response.status_code
