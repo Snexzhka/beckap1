@@ -11,6 +11,7 @@ def reload(path: str, file: str) -> int:
      работы возвращает статус запроса.
      param path: str - путь в файлу в локальной папке
      param file: str - файл в локальной папке для передачи в облако
+     param mode: bool - режим перезаписи
      return: int - статус запроса или ошибка
     """
     url: str = take_url(file, mode=True)
