@@ -8,4 +8,4 @@ if __name__ == '__main__':
     logging.info('Программма синхронизации запущена')
     create_a_folder()
     while True:
-        function(interval)
+        function(int(interval))
