@@ -11,7 +11,6 @@ def get_files_size() -> dict:
     папки нет,  выдает исключение FileNotFoundError
     return: dict - словарь из файдлв локальной папки"""
     try:
-        logging.info('начинаю делать лист')
         files = get_files()
         files_hash: Dict = {}
         for file in files:

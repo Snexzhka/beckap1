@@ -133,3 +133,4 @@ dmypy.json
 config.ini
 
 log.log
+logs.log

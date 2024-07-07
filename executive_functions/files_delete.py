@@ -10,13 +10,18 @@ def files_delete(cloud_storage: dict, local_storage: dict) -> None:
     param cloud_storage: dict - словарь из файлов папки в облаке
     param local_storage: dict - словарь из файлов локальной папки.
     """
-
+    if local_storage.keys() == cloud_storage.keys():
+        return
     for file in cloud_storage.keys():
         try:
             if not local_storage.get(file):
                 response = delete(file)
                 if response == 204:
                     logging.info(f'файл {file} успешно удален')
+                elif response == 423:
+                    logging.error(f'Файл {file} не удален. Технические работы')
+                elif response == 503:
+                    logging.error(f'Файл {file} не удален.Сервис временно недоступен.')
                 else:
                     logging.error(f'не удалось удалить  файл {file}')
         except ConnectionError:

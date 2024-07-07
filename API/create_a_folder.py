@@ -11,8 +11,17 @@ headers = {'Content-Type': 'application/json', 'Accept': 'application/json', 'Au
 def create_a_folder() -> None:
     """Функция для создания папки на янлдекс диске. Если папка есть, функция завершает работу."""
     if os.path.isdir(disk_path):
-        logging.info(f'Папка {disk_path} на диске существует ')
+        logging.info(f'Папка {disk_path} на диске уже существует ')
         return
     else:
-        requests.put(f'{url}?path={disk_path}', headers=headers)
-        logging.info(f'Папка {disk_path} на диске создана ')
+        response = requests.put(f'{url}?path={disk_path}', headers=headers)
+        if response == 201:
+            logging.info(f'Папка {disk_path} на диске создана ')
+        elif response == 401:
+            logging.error(f'Папка {disk_path} не создана, пользователь не авторизован.')
+        elif response == 403:
+            logging.error(f'API недоступно. Слишком много файлов')
+        elif response == 423:
+            logging.error(f'Техработы сайтаю Папка {disk_path} не создана')
+        else:
+            logging.error(f'Папка {disk_path} не создана, пользователь не авторизован.')
