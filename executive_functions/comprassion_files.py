@@ -7,7 +7,7 @@ from API.reload import reload
 def comprassion_files(cloud_storage: dict, local_storage: dict) -> None:
     """Функция для дозаписи файла, если файл в локальной папке изменен. Получает на вход два словаря, содержащих имя
     файла (ключ словаря) и хэш_сумма (значение) - в локальнойм хранилище и в облаке. Если ключи равны, а значения нет,
-    дозаписывает файл в облако. При невозможности найти папку в облаке возвращает исключение ConnectionRefusedError.
+    дозаписывает файл в облако. При невозможности получить папку из облака возвращает исключение ConnectionRefusedError.
     param cloud_storage: dict - словарь из файлов папки в облаке
     param local_storage: dict - словарь из файлов локальной папки.
     """
@@ -18,10 +18,8 @@ def comprassion_files(cloud_storage: dict, local_storage: dict) -> None:
                 if cloud_storage[file] != local_storage[file]:
                     response = reload(os.path.join(local_file, file), file)
                     if response == 201:
-                        print(response)
                         logging.info('файл дозаписан успешно')
                     else:
                         logging.error('не удалось записать файл')
-
         except ConnectionRefusedError:
             logging.error('папка в облаке не найдена')
