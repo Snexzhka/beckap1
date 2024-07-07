@@ -138,3 +138,5 @@ logs.log
 .idea
 
 .idea/
+
+.idea/*
