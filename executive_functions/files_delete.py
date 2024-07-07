@@ -15,7 +15,7 @@ def files_delete(cloud_storage: dict, local_storage: dict) -> None:
         try:
             if not local_storage.get(file):
                 response = delete(file)
-                if response == 201:
+                if response == 204:
                     logging.info(f'файл {file} успешно удален')
                 else:
                     logging.error(f'не удалось удалить  файл {file}')

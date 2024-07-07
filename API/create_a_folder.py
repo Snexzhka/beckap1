@@ -10,9 +10,9 @@ headers = {'Content-Type': 'application/json', 'Accept': 'application/json', 'Au
 
 def create_a_folder() -> None:
     """Функция для создания папки на янлдекс диске. Если папка есть, функция завершает работу."""
-    if not os.path.isdir(disk_path):
-        requests.put(f'{url}?path={disk_path}', headers=headers)
-        logging.info(f'Папка {disk_path} на диске создана ')
-    else:
+    if os.path.isdir(disk_path):
         logging.info(f'Папка {disk_path} на диске существует ')
         return
+    else:
+        requests.put(f'{url}?path={disk_path}', headers=headers)
+        logging.info(f'Папка {disk_path} на диске создана ')
