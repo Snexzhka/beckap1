@@ -14,6 +14,6 @@ def create_a_folder() -> None:
     elif response == 403:
         logging.error(f'API недоступно. Слишком много файлов')
     elif response == 423:
-        logging.error(f'Техработы сайтаю Папка {disk_path} не создана')
+        logging.error(f'Техработы сайта. Папка {disk_path} не создана')
     else:
         logging.info(f'Папка {disk_path} на диске уже существует ')
