@@ -1,4 +1,3 @@
-from . import function
 from . import comprassion_files
 from . import files_delete
 from . import files_update
