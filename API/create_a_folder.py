@@ -1,4 +1,3 @@
-import os.path
 import requests
 import logging
 from Config.config_file import TOKEN, disk_path
