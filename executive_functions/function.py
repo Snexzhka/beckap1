@@ -9,7 +9,7 @@ from executive_functions.files_delete import files_delete
 from typing import Dict
 
 
-def function(num: int) -> None:
+def function(number: int) -> None:
     """Основная функция для управления функциями добавления, обновления и удаления файлов из облака. На вход получает
     интервал времени в секундах , через который происходит сравнение файловю При невозможности подключиться к облаку
     выдает исключение ConnectionRefusedError
@@ -28,4 +28,4 @@ def function(num: int) -> None:
     except ConnectionRefusedError:
         logging.error('невозможно получить данные из облака')
 
-    sleep(num)
+    sleep(number)

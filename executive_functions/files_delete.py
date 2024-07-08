@@ -19,7 +19,5 @@ def files_delete(cloud_storage: dict, local_storage: dict) -> None:
                 logging.info(f'файл {file} успешно удален')
             elif response == 423:
                 logging.error(f'Файл {file} не удален. Технические работы')
-            elif response == 503:
-                logging.error(f'Файл {file} не удален.Сервис временно недоступен.')
             else:
                 logging.error(f'не удалось удалить  файл {file}, нет соединения')
