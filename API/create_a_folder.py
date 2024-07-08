@@ -1,10 +1,7 @@
 import requests
 import logging
-from Config.config_file import TOKEN, disk_path
-
-
-url = 'https://cloud-api.yandex.net/v1/disk/resources'
-headers = {'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': f'OAuth {TOKEN}'}
+from Config.config_file import disk_path
+from API.params import url, headers
 
 
 def create_a_folder() -> None:
