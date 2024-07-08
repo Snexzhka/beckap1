@@ -16,8 +16,8 @@ def get_file() -> dict | int:
     if response.get('_embedded'):
         data: Dict = {}
         data_response: Dict = response['_embedded']['items']
-        for files in data_response:
-            data[files['name']] = files['sha256']
+        for file in data_response:
+            data[file['name']] = file['sha256']
         return data
     else:
         time.sleep(3)

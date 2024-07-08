@@ -4,7 +4,7 @@ from API.take_url import take_url
 from typing import Dict
 
 
-def load_file(path: str, file: str) -> int:
+def load_file(path: str, file: str) -> int | None:
     """Функция записи файла в облачное хранилище, если файл в локальной папке изменен. Получает ссылку для загрузки
     файла на яндекс диск. Открывает файл в бинарном режиме,формирует словарь для передачи в качестве аргумента в API
     запрос. При успешной работе возвращет статус запроса. При невозможности прочтения файла возвращает исключение
@@ -20,7 +20,7 @@ def load_file(path: str, file: str) -> int:
         files_load = open(path, 'rb')
     except FileNotFoundError:
         logging.error(f'файл {file} не найден')
-        return 410
+        return
     files: Dict = {'file': files_load}
     response = requests.post(url, files=files)
     files_load.close()
