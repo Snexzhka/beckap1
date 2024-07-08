@@ -10,7 +10,7 @@ def files_delete(cloud_storage: dict, local_storage: dict) -> None:
     param cloud_storage: dict - словарь из файлов папки в облаке
     param local_storage: dict - словарь из файлов локальной папки.
     """
-    if local_storage.keys() == cloud_storage.keys():
+    if cloud_storage.keys() == local_storage.keys():
         return
     for file in cloud_storage.keys():
         try:
