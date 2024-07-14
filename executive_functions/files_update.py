@@ -18,7 +18,7 @@ def files_update(cloud_storage: dict, local_storage: dict) -> None:
         if not cloud_storage.get(file):
             response = load_file(os.path.join(local_file, file), file)
             if response == 201:
-                logging.info(f'файл {file} успешно изменен')
+                logging.info(f'файл {file} успешно записан')
             elif response == 507:
                 logging.error(f'файл {file} не записан, Недостаточно места')
             elif response == 413:
